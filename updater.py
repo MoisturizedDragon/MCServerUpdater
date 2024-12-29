@@ -29,7 +29,13 @@ def download_fabric():
         file_path = os.path.join(fabric_folder, filename)
         with open(file_path, "wb") as file:
             file.write(response.content)
-        subprocess.run(["java", "-jar", file_path, "server", "-downloadMinecraft"])
+        subprocess.run(["java", 
+                        "-jar", 
+                        file_path, 
+                        "server",
+                        "-mcversion", minecraft_version,
+                        "-dir", fabric_folder,
+                        "-downloadMinecraft"])
     else:
         print(f"Fabric download failed with status code {response.status_code}")
 
