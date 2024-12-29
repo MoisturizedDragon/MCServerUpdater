@@ -23,7 +23,7 @@ def get_latest_fabric_version():
 def download_fabric():
     version = get_latest_fabric_version()
     filename = f"fabric-installer-{version}.jar"
-    response = requests.get(f"https://maven.fabricmc.net/net/fabricmc/fabric-installer/{version}/fabric-installer-{version}-server.jar")
+    response = requests.get(f"https://maven.fabricmc.net/net/fabricmc/fabric-installer/{version}/fabric-installer-{version}.jar")
     if response.status_code == 200:
         os.makedirs(fabric_folder, exist_ok=True)
         file_path = os.path.join(fabric_folder, filename)
