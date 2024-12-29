@@ -50,7 +50,7 @@ def check_mod_version(mod_name, mod_id):
 
     data = response.json()
     for item in data:
-        if minecraft_version in item['game_versions']:
+        if (minecraft_version in item['game_versions']) and ('fabric' in item ['loaders']):
             print(f"Mod '{mod_name}' for version {minecraft_version} found.")
             return True
 
@@ -69,7 +69,7 @@ def download_mod(mod_name, mod_id):
     data = response.json() 
     download_url = None
     for item in data:
-        if minecraft_version in item['game_versions']:
+        if (minecraft_version in item['game_versions']) and ('fabric' in item['loaders']):
             download_url = item['files'][0]['url']
             break
 
